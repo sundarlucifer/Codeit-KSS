@@ -1,0 +1,32 @@
+/*
+Given an array of intervals arr[] of size N, 
+find the Kth smallest element among all the elements 
+within the intervals of the given array.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+#define F first
+#define S second
+#define pii pair<int,int>
+
+int solve(vector<pii > arr, int n, int k) {
+    priority_queue<pii,vector<pii>,greater<pii> > pq;
+    for(auto val : arr) pq.push({val.F, val.S});
+    while(k>1) {
+        pii val = pq.top();
+        pq.pop();
+        if(val.F<=val.S) pq.push({val.F+1, val.S}), k--;
+    }
+    return pq.top().F;
+}
+
+int main() {
+    int n, k, a, b;
+    cin >> n;
+    vector<pii> arr(n);
+    for(int i=0; i<n; i++) cin>>a>>b, arr[i]={a,b};
+    cin >> k;
+    cout << solve(arr, n, k) << endl;
+    return 0;
+}
