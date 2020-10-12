@@ -10,7 +10,7 @@ using namespace std;
 #define S second
 #define pii pair<int,int>
 
-int solve(vector<pii > arr, int n, int k) {
+int solve(vector<pii> arr, int n, int k) {
     priority_queue<pii,vector<pii>,greater<pii> > pq;
     for(auto val : arr) pq.push({val.F, val.S});
     while(k>1) {
