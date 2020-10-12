@@ -1,0 +1,25 @@
+/*
+Implement a Text Editor with 4 operations
+  1. WRITE X - write 'X' to editor
+  2. READ - Print the editor content
+  3. UNDO - undo operation
+  4. REDO - redo operation
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    char c;
+    string text="", undo="", s;
+    while(cin>>s) {
+        if(s=="WRITE") cin>>c, text+=c;
+        else if(s=="READ") cout<<text<<endl;
+        else if(s=="UNDO") undo+=text.back(), text.pop_back();
+        else if(s=="REDO") text+=undo.back(), undo.pop_back();
+    }
+}
+
+int main() {
+    solve();
+}
