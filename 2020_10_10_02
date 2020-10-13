@@ -1,0 +1,29 @@
+/*
+Find the length of longest substring without repeating char
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(string s) {
+    int max_lnt=1, strt=0, end=0;
+    set<char> visited;
+    while(end<s.length()) {
+        if(visited.find(s[end])!=visited.end()){
+            visited.erase(s[strt++]);
+        }else{
+            max_lnt=max(max_lnt, end-strt+1);
+            visited.insert(s[end++]);
+        }
+    }
+    return max_lnt;
+}
+
+int main() {
+    int n; cin>>n;
+    string s;
+    while(n--) {
+        cin>>s;
+        cout<<s<<" : "<<solve(s)<<endl;
+    }
+}
